@@ -2,10 +2,10 @@
  * @format
  */
 import React from 'react';
-import {View, Text, StyleSheet, ScrollView} from 'react-native';
+import {View, StyleSheet, ScrollView} from 'react-native';
+import {useSelector, shallowEqual} from 'react-redux';
 
-import {map} from './map.constants';
-
+import Tile from './Tile';
 const styles = StyleSheet.create({
   column: {
     flexDirection: 'row',
@@ -22,18 +22,17 @@ const styles = StyleSheet.create({
 });
 
 const Map = (): any => {
+  const map = useSelector(state => {
+    return state.map.map;
+  });
+  console.log('map', map);
   return (
     <ScrollView horizontal showsHorizontalScrollIndicator={false}>
       <ScrollView showsVerticalScrollIndicator={false}>
         {map.map((row, indexRow) => (
           <View style={styles.column} key={indexRow}>
             {row.map((tile, indexTile) => (
-              <View style={styles.row} key={indexTile}>
-                <Text>{tile.locality.name}</Text>
-                {tile.resources.map(resource => (
-                  <Text>{resource.type}</Text>
-                ))}
-              </View>
+              <Tile tile={tile} key={indexTile} />
             ))}
           </View>
         ))}
