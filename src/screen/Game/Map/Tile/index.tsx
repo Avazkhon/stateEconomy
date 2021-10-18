@@ -24,16 +24,17 @@ const styles = StyleSheet.create({
 const Map = ({tile}: {tile: TileExempleType}) => {
   return (
     <View style={styles.row}>
-      {tile.locality.type === 'town' && (
+      {tile.locality === 'town' && (
         <Image source={assets.townAsset} style={styles.image} />
       )}
-      {tile.locality.type === 'castle' && (
+      {tile.locality === 'castle' && (
         <Image source={assets.castleAsset} style={styles.image} />
       )}
-      {tile.locality.type === 'village' && (
+      {tile.locality === 'village' && (
         <Image source={assets.villageAsset} style={styles.image} />
       )}
-      <Text>{tile.locality.type}</Text>
+      <Text>{tile.locality}</Text>
+      <Text>{tile.owner}</Text>
     </View>
   );
 };

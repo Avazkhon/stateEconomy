@@ -1,18 +1,18 @@
-import {getTile} from '../constants/map.constants';
+import players from '../constants/players.constants';
 
 const INITIAL_STATE = {
-  map: getTile(),
+  players,
 };
 
 const friendsReducer = (state = INITIAL_STATE, action: any) => {
   switch (action.type) {
-    case 'REPLACE_TILE':
+    case 'REPLACE_PLAYER':
       const newState = {
-        map: state.map.map(tile => {
-          if (tile.id === action.id) {
-            return action.tile;
+        players: state.players.map(player => {
+          if (player.id === action.id) {
+            return player;
           }
-          return tile;
+          return player;
         }),
       };
       return newState;

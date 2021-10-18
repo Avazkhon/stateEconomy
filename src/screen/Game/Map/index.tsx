@@ -25,7 +25,6 @@ const Map = (): any => {
   const map = useSelector(state => {
     return state.map.map;
   });
-  console.log('map', map);
   return (
     <ScrollView horizontal showsHorizontalScrollIndicator={false}>
       <ScrollView showsVerticalScrollIndicator={false}>
